@@ -1,0 +1,324 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="Licd. Gilber R. linares R.">
+    <meta name="generator" content="Hugo 0.88.1">
+    <title>Gestion_CRMM</title>
+	<link rel="canonical" href="https://getbootstrap.com/docs/5.1/examples/sidebars/">
+	<script src="../assets/dist/js/jquery.js"></script>	
+	<script src="../assets/dist/js/jquery-ui.js"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>   
+	<script src="js/gl_constant_re.js"></script>
+	<script src="js/gl_global_ex.js"></script>	
+    <script type="module" src="js/param_module_recepcion.js" > </script>
+    <script src="js/proc_crmm.js"></script>
+    <!-- Bootstrap core CSS -->
+	<link href="../assets/dist/css/bootstrap.min.css" rel="stylesheet">
+	<link href="../assets/dist/css/jquery-ui.css" rel="stylesheet">
+
+    <style>
+      .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        user-select: none;
+      }
+	  	  
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+      }
+	  
+	  <!-- d-flex flex-column flex-shrink-0 p-3, -->
+	  .d-flex {
+		align="center";
+	  }
+	  
+	  .container { 
+			padding-right: 15px; 
+			padding-left: 15px; 
+			margin-right: auto; 
+			margin-left: auto; 
+		}
+	  th { 
+		font-size: 13px; 
+		font-weight: normal; 
+		padding: 8px; 
+		text-align: center; 
+		background: #b9c9fe; 
+		border-top: 4px solid #aabcfe;
+		border-left: 4px solid #aabcfe;
+		border-right: 4px solid #aabcfe;
+		border-bottom: 3px solid #aabcfe; 
+		color: #039; }
+	td { 
+		font-size: 13px; 
+		font-weight: normal;
+		padding: 8px; 
+		text-align: center; 
+		background: #e8edff; 
+		border-bottom: 1px solid #fff; 
+		border-left: 2px solid #fff;
+		border-right: 2px solid #fff;
+		color: #669; 
+		border-top: 1px solid transparent; }
+	tr:hover td {
+		background: #d0dafd; 
+		color: #339; }    
+	  
+    </style>
+    
+    <!-- Custom styles for this template -->
+    <link href="css/sidebars.css" rel="stylesheet">
+	<link href="css/dropdowns.css" rel="stylesheet">
+  </head>
+  <body onload="init_recepcion()">
+
+<main>
+<!--<h1 class="visually-hidden"> </h1> -->
+
+  <!--<div class="b-example-divider"> </div> -->
+  
+  <div class="d-flex flex-column align-items-stretch flex-shrink-0 bg-white" style="width: 380px;">
+  
+    <div>
+		<a href="/" class="d-flex align-items-center flex-shrink-0 p-3 link-dark text-decoration-none border-bottom">
+			<svg class="bi me-2" width="30" height="24"> <use xlink:href="#bootstrap"> </use> </svg>
+			<span class="fs-5 fw-semibold"> Gestión CRMM </span>
+		</a> 
+    </div>
+	
+	<div class="list-group list-group-flush border-bottom scrollarea">      
+		
+		<div  id="idListadoDepartamentos">   
+	                  
+
+		</div>
+				  
+     <!--<div class="b-example-divider"></div>        -->     
+    
+  </div>
+  
+  </div>  
+     
+ <div class="b-example-divider"></div>	
+	
+  <div class="d-flex flex-column flex-shrink-0 p-3 bg-light scrollarea" style="width: 910px;">
+    <h5 align="center"> Gestión CRMM </h5>
+    <hr>
+	
+	<div class="clearfix">
+	 
+		<div class="container">	 
+		
+			<div class="row">
+				<div class="col col-sm-4">       <!--    Primera columna      -->			
+					<div id="cabecera"> <h5 id="diaSemana" align="left"></h5>  </div>
+					<div style="color:blue; font-family: verdana, arial; font-size:15px;" id ="diaHoy" align="left" > &nbsp; </div>
+				</div>
+				<div class="col col-sm-4">       <!--    Segunda columna      -->			
+					<div id="cabecera2"> <h5 align="center"> Nombre: </h5>  </div>
+					<div style="color:blue; font-family: verdana, arial; font-size:15px;" id ="transporte" align="center" > &nbsp; </div>
+				</div>
+				<div class="col col-sm-4">       <!--    Tercera columna      -->			
+					<div id="cabecera3">  <h5 align="right">Hora Actual</h5></div>
+					<div style="color:blue; font-family: verdana, arial; font-size:15px;" id ="displayReloj" align="right" > &nbsp; </div>			
+				</div>				
+			</div>				
+			
+		</div>	 <!-- Class Container -->
+
+
+        <form class="p-2 mb-2 bg-light border-bottom" id="formProcesos">				
+
+
+         <div class="container">	
+        <br> 
+		<div class="row">
+			
+			
+							
+		</div>				
+	    </div>	 <!-- Class Container -->    
+
+
+   
+     
+
+    </form>  <!-- form Container -->
+
+
+ <div class="d-flex gap-5 justify-content-center" id="dropdownFilter">
+    <div class="dropdown-menu pt-0 mx-0 rounded-3 shadow overflow-hidden" style="width: 580px;">    
+       <div class="d-flex gap-5 justify-content-center" id="dropdownForm">
+        <form class="needs-validation" novalidate id="FormAgua">                					
+					   
+							<div class="col-12 " >
+							      <h4 class="lead" align="center"> <i> <strong> Gestión CRMM:  </strong> </i> </h4>
+								  <label for="nombre" class="form-label">  </label>
+								  <input type="text" class="form-control" name="nombre" id="nombre" placeholder="Nombre " required>
+								  <div class="invalid-feedback">
+									Please enter your Name.
+								  </div>
+							</div>
+							
+                            <div class="col-12">
+								  <label for="cedula" class="form-label"> </label>
+								  <input type="text" class="form-control" name="cedula" id="cedula" placeholder="Cédula" required>
+								  <div class="invalid-feedback">
+									Please enter your Cédula.
+								  </div>								  
+							</div>
+
+                            <div class="col-12">
+								  <label for="empresa" class="form-label"> </label>
+								  <input type="text" class="form-control" name="empresa" id="empresa" placeholder="Empresa" required>
+								  <div class="invalid-feedback">
+									Please enter your Empresa.
+								  </div>								  
+							</div>
+
+                            <div class="row g-3">
+                            <div class="col-md-6">
+								  <label for="vehiculo" class="form-label"> </label>
+								  <input type="text" class="form-control" name="vehiculo" id="vehiculo" placeholder="Vehículo" required>
+								  <div class="invalid-feedback">
+									Please enter Vehículo.
+								  </div>	                                 
+							</div>
+
+                            <div class="col-md-4">
+								  <label for="placa" class="form-label"> </label>
+								  <input type="text" class="form-control" name="placa" id="placa" placeholder="Placa" required>
+								  <div class="invalid-feedback">
+									Please enter Placa.
+								  </div>  							  
+							</div>
+                            </div>
+                                                        
+                            <div class="col-md-6">
+								  <label for="llenos" class="form-label"> </label>
+								  <input type="number" class="form-control" name="llenos" id="llenos" placeholder="Botellones llenos" required>
+								  <div class="invalid-feedback">
+									Please enter Bottellones Llenos.
+								  </div>								  
+							</div>
+                           
+                           <div class="row g-3">
+                            <div class="col-md-6">
+								  <label for="vacios" class="form-label"> </label>
+								  <input type="number" class="form-control" name="vacios" id="vacios" placeholder="Botellones vacíos" required>
+								  <div class="invalid-feedback">
+									Please enter Botellones Vacios.
+								  </div>	                                 
+							</div>
+
+                            <div class="col-md-4">
+								  <label for="horas" class="form-label"> </label>
+								  <input type="text" class="form-control" name="horas" id="horas" placeholder="Hora Salida" required>
+								  <div class="invalid-feedback">
+									Please enter Hora Salida.
+								  </div>  							  
+							</div>
+                            </div>
+                             
+                             <div class="row g-3">
+
+							<div class="col-md-4">	
+                                	<div>	
+                                    </div>		
+                                    <br>		  
+								     <div>
+									<button type="button" class="btn btn-primary" onclick="insertRegAgua(FormAgua)"> Incluir </button> 
+								  </div>
+                                                                   
+							</div>
+
+                            <div class="col-md-4">							  
+                                   <div>	
+                                    </div>		
+                                    <br>
+                                   <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+                                     Vista
+                                   </button>                                  
+
+							</div>
+
+                           
+                            </div>
+                         
+						</form>	                 
+
+
+                                
+             </div>
+      </div>   <!-- div 480 -->
+	 </div>    <!-- center -->
+	 
+ </div>
+	
+ 	<div>
+     
+	  
+	  
+	  <div id="idResultadoSelect" >	     
+		<span style="color:brown;" id="txtInformacion"></span></p> 		
+				
+	  </div>  
+	 
+    
+            
+  </div>
+
+ <!-- <div class="b-example-divider"></div> -->
+
+   <!--    Ejemplo Modal      -->
+	  
+  
+  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+     <div class="modal-dialog" role="document">
+       <div class="modal-content">
+         <div class="modal-header">
+           <h3 class="modal-title" id="exampleModalLabel">Datos Recepción de Aguas</h3>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+         <!-- Mensaje de Crear string de los Servicios  -->
+        <div class="d-flex gap-5 justify-content-center" id="dropdownModal">  
+			<div class="dropdown-menu pt-0 mx-0 rounded-3 shadow overflow-hidden" style="width: 480px;">      
+			<!--    Ejemplo Modal     -->
+	        <br>                   
+	          <div class="list-group list-group-flush border-bottom scrollarea">		
+	 	       <div  id="resultadoModal">   
+	           </div>	   
+              </div>	
+            </div>		  
+		</div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+        <button type="button" class="btn btn-primary" onclick="listadoMaterial()">Acción principal</button>
+      </div>
+    </div>
+  </div>
+</div>	
+	<!--    Ejemplo Modal     -->
+
+   
+</main>
+
+    <script src="../assets/dist/js/bootstrap.bundle.min.js"></script>
+	<script src="js/bootstrap.min.js" ></script>
+    <script src="js/sidebars.js"></script>
+	<script> 
+		$( "#spinner" ).spinner();
+	</script>
+  </body>
+</html>
